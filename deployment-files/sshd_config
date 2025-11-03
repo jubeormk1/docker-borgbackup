@@ -1,0 +1,25 @@
+Port 22
+PermitRootLogin no
+PasswordAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+AllowUsers backupuser
+StrictModes yes
+X11Forwarding no
+AllowTcpForwarding no
+AllowAgentForwarding no
+PermitTTY no
+PrintMotd no
+Protocol 2
+LogLevel VERBOSE
+Subsystem sftp internal-sftp
+SyslogFacility AUTH
+LogLevel DEBUG3
+
+
+# Only apply ForceCommand and Chroot to the backupuser
+Match User backupuser
+    # ChrootDirectory /data
+    AllowTCPForwarding no
+    X11Forwarding no
+    ForceCommand /usr/local/bin/borg_wrapper.sh
