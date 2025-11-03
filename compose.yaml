@@ -1,0 +1,25 @@
+services:
+  backup-server:
+    build: .
+    environment:
+      - SSH_PUBLIC_KEY=${SSH_PUBLIC_KEY}
+      - SSH_PORT=${SSH_PORT:-2222}
+      - VOLUMES_PATH=${VOLUMES_PATH:-./volumes}
+    ports:
+      - "${SSH_PORT}:22"
+    volumes:
+      - ${VOLUMES_PATH}/data/:/data
+      - ${VOLUMES_PATH}/ssh_logs:/var/log/ssh
+      - ${VOLUMES_PATH}/command_logs:/var/log/commands
+      - ${VOLUMES_PATH}/network_logs:/var/log/network
+      - ${VOLUMES_PATH}/session_logs:/var/log/sessions
+    cap_add:
+      - NET_RAW  # Only needed for tcpdump
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /run
+      - /var/run
