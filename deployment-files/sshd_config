@@ -22,4 +22,4 @@ Match User backupuser
     # ChrootDirectory /data
     AllowTCPForwarding no
     X11Forwarding no
-    ForceCommand /usr/local/bin/borg_wrapper.sh
+    ForceCommand /usr/local/bin/remote_wrapper.sh

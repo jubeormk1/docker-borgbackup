@@ -4,6 +4,7 @@ FROM alpine:latest
 RUN apk add --no-cache \
     openssh-server \
     borgbackup \
+    rsync \
     shadow \
     sudo \
     tcpdump \
@@ -36,8 +37,8 @@ RUN mkdir -p /var/log/ssh && \
 
 # Copy monitoring wrapper scripts
 
-COPY ./deployment-files/borg_wrapper.sh /usr/local/bin/borg_wrapper.sh
-RUN chmod +x /usr/local/bin/borg_wrapper.sh
+COPY ./deployment-files/remote_wrapper.sh /usr/local/bin/remote_wrapper.sh
+RUN chmod +x /usr/local/bin/remote_wrapper.sh
 
 # Copy log rotation script
 

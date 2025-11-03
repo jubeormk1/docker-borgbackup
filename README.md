@@ -1,6 +1,6 @@
 # Docker Borg Backup
 
-A secure, containerized Borg Backup server with comprehensive monitoring and SSH access.
+A secure, containerized Borg Backup server with comprehensive monitoring and SSH access. Now allowing also rsync.
 
 **Warning**: Work In Process. Use under your own risk and if you may add an issue.
 
@@ -43,15 +43,15 @@ borg-backup-server/
 ├── start.sh                # Container startup script
 ├── .env.example            # Environment configuration
 ├── deployment-files/       # Scripts and config for the container
-│   ├── borg-wrapper.sh     # Catches the borg command
+│   ├── remote_wrapper.sh   # Filters borg and rsync commands
 │   ├── log_rotator.sh      # Rotate the log files
 │   ├── monitor_commands.sh # Monitors the commands sent to the server
 │   └── sshd_config.sh      # sshd configuration
 └── multi-tenant-scripts/   # Management scripts
-   ├── create-user.sh       # Create new user containers
-   ├── list-users.sh        # List all users
-   ├── remove-user.sh       # Remove user containers
-   └── config.sh            # Shared configuration
+    ├── create-user.sh      # Create new user containers
+    ├── list-users.sh       # List all users
+    ├── remove-user.sh      # Remove user containers
+    └── config.sh           # Shared configuration
 
 ```
 
