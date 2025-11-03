@@ -38,15 +38,21 @@ A secure, containerized Borg Backup server with comprehensive monitoring and SSH
 
 ```
 borg-backup-server/
-├── compose.yaml        # Main Docker Compose configuration
-├── Dockerfile          # Container build instructions
-├── start.sh            # Container startup script
-├── .env.example        # Environment configuration
-└── scripts/            # Management scripts
-    ├── create-user.sh  # Create new user containers
-    ├── list-users.sh   # List all users
-    ├── remove-user.sh  # Remove user containers
-    └── config.sh       # Shared configuration
+├── compose.yaml            # Main Docker Compose configuration
+├── Dockerfile              # Container build instructions
+├── start.sh                # Container startup script
+├── .env.example            # Environment configuration
+├── deployment-files/       # Scripts and config for the container
+│   ├── borg-wrapper.sh     # Catches the borg command
+│   ├── log_rotator.sh      # Rotate the log files
+│   ├── monitor_commands.sh # Monitors the commands sent to the server
+│   └── sshd_config.sh      # sshd configuration
+└── multi-tenant-scripts/   # Management scripts
+   ├── create-user.sh       # Create new user containers
+   ├── list-users.sh        # List all users
+   ├── remove-user.sh       # Remove user containers
+   └── config.sh            # Shared configuration
+
 ```
 
 ## Multi-User Management
