@@ -14,7 +14,7 @@ A secure, containerized Borg Backup server with comprehensive monitoring and SSH
 
 1. **Clone the repo**:
    ```bash
-   git clone https://github.com/jubeormk1/borg-backup-server
+   git clone https://github.com/jubeormk1/docker-borgbackup.git
    cd borg-backup-server
    ```
 
